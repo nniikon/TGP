@@ -36,6 +36,7 @@ void Window::Draw() {
 
     button_manager_    .Draw(&window_);
     pixel_area_manager_.Draw(&window_);
+    image_manager_     .Draw(&window_);
 
     window_.display();
 }
@@ -46,4 +47,8 @@ ManagerBase<ButtonBase>* Window::GetButtonManager() {
 
 ManagerBase<PixelArea>* Window::GetPixelAreaManager() {
     return &pixel_area_manager_;
+}
+
+ManagerBase<ImageBase>* Window::GetImageManager() {
+    return &image_manager_;
 }

@@ -2,8 +2,7 @@
 
 using namespace TGP;
 
-ImageManager::~ImageManager() {
-}
+ImageManager::~ImageManager() {}
 
 void ImageManager::Draw(sf::RenderWindow* window) {
     for (size_t i = 0; i < Size(); i++) {

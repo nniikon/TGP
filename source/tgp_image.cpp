@@ -2,10 +2,9 @@
 
 using namespace TGP;
 
-ImageRect::ImageRect(const sf::Sprite& sprite)
+ImageSprite::ImageSprite(const sf::Sprite& sprite)
     : sprite_(sprite) {}
 
-int ImageRect::Draw(sf::RenderWindow* window) {
+void ImageSprite::Draw(sf::RenderWindow* window) {
     window->draw(sprite_);
-    return 0;
 }

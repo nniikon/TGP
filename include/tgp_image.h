@@ -3,26 +3,26 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "tgp_manager.h"
+
 namespace TGP {
 
-class ImageBase {
+class ImageBase : public Drawable {
 public:
-    virtual int Draw(sf::RenderWindow* window) = 0;
     virtual ~ImageBase() = default;
 };
 
-class ImageRect : public ImageBase {
+class ImageSprite : public ImageBase {
 public:
-    int Draw(sf::RenderWindow* window) override;
+    void Draw(sf::RenderWindow* window) override;
 
-    ImageRect(const sf::Sprite& sprite);
-    ~ImageRect() override = default;
+    ImageSprite(const sf::Sprite& sprite);
 
 private:
     sf::Sprite sprite_;
 };
 
-} // namespace TGP
+} // namespace 
 
 #endif // TGP_IMAGE_H_
 
