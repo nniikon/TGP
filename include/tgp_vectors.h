@@ -24,6 +24,10 @@ template <class T> vec2<T> operator-(const vec2<T>& lhs, const vec2<T>& rhs);
 template <class T> vec2<T> operator*(const vec2<T>& lhs, const vec2<T>& rhs);
 template <class T> vec2<T> operator*(const vec2<T>& lhs, const T& scalar);
 template <class T> vec2<T> operator/(const vec2<T>& lhs, const T& scalar);
+template <class T> vec2<T> operator+=(const vec2<T>& lhs, const vec2<T>& rhs);
+template <class T> vec2<T> operator-=(const vec2<T>& lhs, const vec2<T>& rhs);
+template <class T> vec2<T> operator*=(const vec2<T>& lhs, const T& scalar);
+template <class T> vec2<T> operator/=(const vec2<T>& lhs, const T& scalar);
 
 template <class T>
 class vec2 {
@@ -48,6 +52,10 @@ template <class T> vec3<T> operator-(const vec3<T>& lhs, const vec3<T>& rhs);
 template <class T> vec3<T> operator*(const vec3<T>& lhs, const vec3<T>& rhs);
 template <class T> vec3<T> operator*(const vec3<T>& lhs, const T& scalar);
 template <class T> vec3<T> operator/(const vec3<T>& lhs, const T& scalar);
+template <class T> vec3<T> operator+=(const vec2<T>& lhs, const vec2<T>& rhs);
+template <class T> vec3<T> operator-=(const vec2<T>& lhs, const vec2<T>& rhs);
+template <class T> vec3<T> operator*=(const vec2<T>& lhs, const T& scalar);
+template <class T> vec3<T> operator/=(const vec2<T>& lhs, const T& scalar);
 
 template <class T>
 class vec3 {
