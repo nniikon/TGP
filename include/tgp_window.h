@@ -14,6 +14,7 @@ public:
     bool IsOpen();
     void Update();
     void Draw();
+    void AddDrawable(Drawable* drawable);
     void SetFramerate(unsigned int framerate);
 
     ManagerBase<ButtonBase>*   GetButtonManager();
@@ -32,6 +33,7 @@ private:
     ButtonManager        button_manager_;
     PixelAreaManager pixel_area_manager_;
     ImageManager          image_manager_;
+    std::vector<Drawable*> drawables_;
 
 };
 

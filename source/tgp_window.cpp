@@ -38,7 +38,15 @@ void Window::Draw() {
     pixel_area_manager_.Draw(&window_);
     image_manager_     .Draw(&window_);
 
+    for (Drawable* drawable : drawables_) {
+        drawable->Draw(&window_);
+    }
+
     window_.display();
+}
+
+void Window::AddDrawable(Drawable* drawable) {
+    drawables_.push_back(drawable);
 }
 
 ManagerBase<ButtonBase>* Window::GetButtonManager() {
