@@ -17,6 +17,9 @@ protected:
 };
 
 class WindowManager : public Drawable, public Updatable { 
+public:
+    void SetMainWindow(std::unique_ptr<WindowBase> window);
+
 protected:
     std::unique_ptr<WindowBase> main_window_;
 };
