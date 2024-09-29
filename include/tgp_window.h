@@ -1,40 +1,24 @@
 #ifndef TGP_WINDOW_H_
 #define TGP_WINDOW_H_
 
-#include <SFML/Graphics.hpp>
-#include "tgp_button_manager.h"
-#include "tgp_image_manager.h"
-#include "tgp_pixel_area_manager.h"
+#include "tgp_drawable.h"
+#include "tgp_updatable.h"
+#include <memory>
 
-namespace TGP {
+namespace tgp {
 
-class Window {
-public:
+class WindowBase : public Drawable, public Updatable { 
+    
+};
 
-    bool IsOpen();
-    void Update();
-    void Draw();
-    void AddDrawable(Drawable* drawable);
-    void SetFramerate(unsigned int framerate);
+class WindowContainerBase : public WindowBase { 
+protected:
+    std::vector<std::unique_ptr<WindowBase>> windows_;
+};
 
-    ManagerBase<ButtonBase>*   GetButtonManager();
-    ManagerBase<PixelArea>* GetPixelAreaManager();
-    ManagerBase<ImageBase>*     GetImageManager();
-
-    Window(unsigned int width, unsigned height, const char* window_name);
-    ~Window();
-    Window           (const Window&) = delete;
-    Window& operator=(const Window&) = delete;
-
-private:
-    const unsigned int kChannelsPerPixel = 4u;
-
-    sf::RenderWindow window_;
-    ButtonManager        button_manager_;
-    PixelAreaManager pixel_area_manager_;
-    ImageManager          image_manager_;
-    std::vector<Drawable*> drawables_;
-
+class WindowManager : public Drawable, public Updatable { 
+protected:
+    std::unique_ptr<WindowBase> main_window_;
 };
 
 }; // namespace

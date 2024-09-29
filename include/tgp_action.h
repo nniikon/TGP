@@ -1,18 +1,17 @@
 #ifndef TGP_ACTION_H_
 #define TGP_ACTION_H_
 
-namespace TGP {
+namespace tgp {
 
 class Action {
 public:
-    virtual void operator()();
+    virtual void operator()() = 0;
+
+    virtual void   Do()      = 0;
+    virtual bool Undo()      = 0;
+    virtual void SaveState() = 0;
 };
 
-class ReversableAction : public Action {
-public:
-    virtual void Reverse();
-};
-
-}; // namespcae
+}; // namespace 
 
 #endif // TGP_ACTION_H_

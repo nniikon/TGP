@@ -1,5 +1,5 @@
-#ifndef TGP_VECTORS_H_
-#define TGP_VECTORS_H_
+#ifndef SFMX_VECTORS_H_
+#define SFMX_VECTORS_H_
 
 #include <cmath>
 
@@ -9,7 +9,7 @@
 // vec3_base>type>
 // vec2 : std::conditional(N == 2, vec2_base, vec3_base)
 
-namespace TGP {
+namespace sfmx {
 
 // VEC2
 
@@ -76,8 +76,8 @@ typedef vec3<float>        vec3f;
 typedef vec3<unsigned int> vec3u;
 typedef vec3<int>          vec3i;
 
-#include "../source/tgp_vectors.tpp"
+#include "../source/sfmx_vectors.tpp"
 
 }; // namespace Vectors
 
-#endif // TGP_VECTORS_H_
+#endif // SFMX_VECTORS_H_
