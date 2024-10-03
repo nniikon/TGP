@@ -1,5 +1,8 @@
 #include "sfmx_sprite.h"
 
+sfmx::Sprite::Sprite() 
+    : sprite_() {}
+
 sfmx::Sprite::Sprite(const sfmx::Texture& texture, const sfmx::IntRect& rectangle) 
     // FIXME:    bit_cast doesn't work
     : sprite_(*(sf::Texture*)(&texture), std::bit_cast<sf::IntRect>(rectangle)) {}
@@ -14,6 +17,14 @@ void sfmx::Sprite::SetPosition(float x, float y) {
 
 void sfmx::Sprite::SetScale(float x, float y) {
     sprite_.setScale(x, y);
+}
+
+void sfmx::Sprite::SetTexture(const sfmx::Texture& texture) {
+    sprite_.setTexture(*(sf::Texture*)(&texture));
+}
+
+void sfmx::Sprite::SetTextureRect(const sfmx::IntRect& rectangle) {
+    sprite_.setTextureRect(std::bit_cast<sf::IntRect>(rectangle));
 }
 
 bool sfmx::FloatRect::Contains(float x, float y) const {

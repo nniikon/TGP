@@ -5,11 +5,13 @@ namespace tgp {
 
 class Action {
 public:
-    virtual void operator()() = 0;
+    void operator()();
 
     virtual void   Do()      = 0;
     virtual bool Undo()      = 0;
-    virtual void SaveState() = 0;
+    virtual bool SaveState() = 0;
+
+    virtual ~Action() = default;
 };
 
 }; // namespace 

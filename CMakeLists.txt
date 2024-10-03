@@ -10,6 +10,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS On)
 add_subdirectory(sfmx)
 
 add_library(tgp STATIC
+    source/tgp_action.cpp
     source/tgp_button.cpp
     source/tgp_application.cpp
     source/tgp_window.cpp
