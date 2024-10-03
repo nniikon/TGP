@@ -7,3 +7,4 @@ libtgp.a
 Makefile
 .cache/clangd/index
 sfmx/libsfmx.a
+compile_commands.json
