@@ -8,3 +8,6 @@ Makefile
 .cache/clangd/index
 sfmx/libsfmx.a
 compile_commands.json
+containers/.cache/clangd/index
+exceptions/.cache/clangd/index
+exceptions/libexceptions.a
