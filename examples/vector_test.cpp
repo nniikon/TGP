@@ -2,7 +2,7 @@
 #include <ostream>
 #include "vector"
 
-#include "../containers/tgp_vector.h"
+#include "../containers/vector/tgp_vector.h"
 
 int TestType();
 int TestBool();
