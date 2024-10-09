@@ -6,31 +6,46 @@
 #include <cassert>
 #include <cstddef>
 #include <cstring>
+#include <inttypes.h>
 
 namespace tgp {
 
-template <typename T>
+template <typename T, typename Strat, size_t N>
 class VectorProxy;
 
-template <typename T>
+template <typename T, typename Strat, size_t N>
 class Vector;
 
-template <typename T>
+#include "tgp_static_allocation.h"
+#include "tgp_dynamic_allocation.h"
+
+template <typename T, typename Strat, size_t N>
 class VectorProxy {
 public:
-    VectorProxy(Vector<T>& vec, size_t index);
-
+    VectorProxy(Vector<T, Strat, N>& vec, size_t index);
     VectorProxy& operator=(const T& value);
-
     operator       T&();
     operator const T&() const;
 
 private:
-    Vector<T>& vec_;
+    Vector<T, Strat, N>& vec_;
     size_t index_;
 };
 
-template <typename T>
+template <typename Strat, size_t N>
+class VectorProxy<bool, Strat, N> {
+public:
+    VectorProxy(Vector<bool, Strat, N>& vec, size_t index);
+    VectorProxy& operator=(bool value);
+    operator bool();
+    operator const bool() const;
+
+private:
+    Vector<bool, Strat, N>& vec_;
+    size_t index_;
+};
+
+template <typename T, typename Strat, size_t N>
 class Vector {
 public:
     Vector();
@@ -40,8 +55,8 @@ public:
 
     T&       at(size_t index);
     const T& at(size_t index) const;
-    VectorProxy<T> operator[](size_t index);
-    const T&       operator[](size_t index) const;
+    VectorProxy<T, Strat, N> operator[](size_t index);
+    const T&                 operator[](size_t index) const;
 
     void reserve(size_t capacity);
     void shrink_to_fit();
@@ -65,24 +80,16 @@ public:
 
     void clear() noexcept;
 
-    friend class VectorProxy<T>;
+    friend class VectorProxy<T, Strat, N>;
 
 private:
     static constexpr float kGrowFactor = 2.f;
 
-    void change_capacity(size_t new_capacity);
-    T* get_element(size_t index) const noexcept;
-    void construct_at(size_t index, const T& value);
-    void destroy_range(size_t start, size_t end) noexcept;
-
-    std::byte* byte_data_;
-    size_t size_;
-    size_t capacity_;
+    Strat strat_;
 };
 
-#include "tgp_vector.tpp"
-#include "tgp_vector_bool.h"
-
 } // namespace tgp
+
+#include "tgp_vector.tpp"
 
 #endif  // CONTAINTERS_TGP_VECTOR_H_
